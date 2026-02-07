@@ -1,9 +1,11 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
+from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 import numpy as np
 import os
 from flask_cors import CORS
+import tensorflow as tf
 
 # Initialize Flask app
 disease_app = Flask(__name__)
@@ -80,7 +82,7 @@ def predict_disease():
         img = image.load_img(img_path, target_size=(224, 224))
         img_array = image.img_to_array(img)
         img_array = np.expand_dims(img_array, axis=0)
-        img_array /= 255.0  # Normalize
+        img_array = preprocess_input(img_array)  # Use MobileNetV2 preprocessing
 
         # Make prediction
         predictions = model.predict(img_array)
@@ -105,6 +107,14 @@ def predict_disease():
         # Clean up the temporary image file
         if os.path.exists(img_path):
             os.remove(img_path)
+
+@disease_app.route('/')
+def index():
+    return send_from_directory('.', 'agro.html')
+
+@disease_app.route('/<path:filename>')
+def serve_static(filename):
+    return send_from_directory('.', filename)
 
 if __name__ == '__main__':
     print("Starting AgroLens Disease Detection API...")

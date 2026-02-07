@@ -8,12 +8,13 @@
     <link rel="stylesheet" href="agro.css">
     <!-- Using Google Fonts for better typography -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="manifest" href="manifest.json">
 
 
 
 <body>
 
-    <!-- App Container -->
+    <!-- App Container --> 
     <div id="app-container">
 
         <!-- Header -->
@@ -66,6 +67,14 @@
                         <i class="fa-solid fa-camera"></i> <span data-i18n="btnStart">Scan Now</span>
                     </button>
 
+                    <!-- Gallery Button -->
+                    <button id="btn-gallery" class="primary-btn-large">
+                        <i class="fa-solid fa-images"></i> <span data-i18n="btnGallery">From Gallery</span>
+                    </button>
+
+                    <!-- Hidden File Input for Gallery -->
+                    <input type="file" id="gallery-input" accept="image/*" style="display: none;">
+
                     <!-- Settings Button -->
                     <button id="btn-settings" class="secondary-btn-large">
                         <i class="fa-solid fa-gear"></i> <span data-i18n="btnSettings">Settings</span>
@@ -76,8 +85,10 @@
             <!-- screen-settings: New Settings Screen -->
             <section id="screen-settings" class="screen">
                 <div class="settings-header">
+                    <button id="btn-settings-back" class="secondary-btn">
+                        <i class="fa-solid fa-arrow-left"></i> <span data-i18n="btnBack">Back</span>
+                    </button>
                     <h2 data-i18n="settingsTitle">Settings</h2>
-                    <button id="btn-settings-back" class="icon-btn"><i class="fa-solid fa-times"></i></button>
                 </div>
                 <div class="settings-content">
                     <div class="setting-item">
@@ -91,6 +102,13 @@
                         <span data-i18n="settingSound">Sound Effects</span>
                         <label class="switch">
                             <input type="checkbox" checked>
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div class="setting-item">
+                        <span data-i18n="settingVoice">Voice Output</span>
+                        <label class="switch">
+                            <input type="checkbox" id="voice-toggle" checked>
                             <span class="slider round"></span>
                         </label>
                     </div>
@@ -126,6 +144,35 @@
 
             <!-- screen-result: Diagnosis Result -->
             <section id="screen-result" class="screen">
+                <!-- Language Selector for Result Screen -->
+                <div class="language-wrapper-result">
+                    <label for="lang-selector-result" class="lang-label"><i class="fa-solid fa-language"></i></label>
+                    <select id="lang-selector-result" class="lang-selector-large">
+                        <option value="en">English</option>
+                        <option value="hi">हिन्दी (Hindi)</option>
+                        <option value="bn">বাংলা (Bengali)</option>
+                        <option value="te">తెలుగు (Telugu)</option>
+                        <option value="mr">मराठी (Marathi)</option>
+                        <option value="ta">தமிழ் (Tamil)</option>
+                        <option value="ur">اردو (Urdu)</option>
+                        <option value="gu">ગુજરાતી (Gujarati)</option>
+                        <option value="kn">ಕನ್ನಡ (Kannada)</option>
+                        <option value="ml">മലയാളം (Malayalam)</option>
+                        <option value="or">ଓଡ଼ିଆ (Odia)</option>
+                        <option value="pa">ਪੰਜਾਬੀ (Punjabi)</option>
+                        <option value="as">অসমীয়া (Assamese)</option>
+                        <option value="sa">संस्कृतम् (Sanskrit)</option>
+                        <option value="ne">नेपाली (Nepali)</option>
+                        <option value="sd">सिंधी (Sindhi)</option>
+                        <option value="ks">कश्मीरी (Kashmiri)</option>
+                        <option value="kok">कोंकणी (Konkani)</option>
+                        <option value="doi">डोगरी (Dogri)</option>
+                        <option value="mai">मैथिली (Maithili)</option>
+                        <option value="mni">मणिपुरी (Manipuri)</option>
+                        <option value="brx">बड़ो (Bodo)</option>
+                        <option value="sat">संताली (Santali)</option>
+                    </select>
+                </div>
                 <div class="result-card">
                     <div class="image-preview" id="captured-image-container">
                         <!-- Captured image will be injected here -->
@@ -173,6 +220,28 @@
                             <span data-i18n="gloves">Wear Gloves</span>
                         </div>
                     </div>
+                </div>
+
+                <!-- Confirmation Section -->
+                <div id="confirmation-section" class="confirmation-container" style="display: none;">
+                    <h3 data-i18n="voiceConfirm">Is this the correct disease? Say yes or no.</h3>
+                    <div class="confirmation-buttons">
+                        <button id="btn-confirm-yes" class="primary-btn-small">
+                            <i class="fa-solid fa-check"></i> <span data-i18n="confirmYes">Yes</span>
+                        </button>
+                        <button id="btn-confirm-no" class="secondary-btn-small">
+                            <i class="fa-solid fa-times"></i> <span data-i18n="confirmNo">No</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Leaf Input Section -->
+                <div id="leaf-input-section" class="leaf-input-container" style="display: none;">
+                    <h3 data-i18n="voiceAskLeaf">What leaf is it? Please tell me the type of leaf.</h3>
+                    <input type="text" id="leaf-input" placeholder="Enter leaf type..." data-i18n-placeholder="leafInputPlaceholder">
+                    <button id="btn-submit-leaf" class="primary-btn-small">
+                        <span data-i18n="btnSubmitLeaf">Submit</span>
+                    </button>
                 </div>
 
                 <button id="btn-home" class="secondary-btn home-btn">

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>AgroLens - Offline AI Crop Diagnostic</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Using Google Fonts for better typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Using FontAwesome for icons (CDN) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- App Container -->
+    <div id="app-container">
+
+        <!-- Header -->
+        <header>
+            <div class="logo-area">
+                <i class="fa-solid fa-leaf logo-icon"></i>
+                <h1>AgroLens</h1>
+            </div>
+            <div class="header-status">
+                <span class="offline-badge"><i class="fa-solid fa-wifi-slash"></i> Offline Mode</span>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main>
+
+            <!-- screen-home: Welcome Screen -->
+            <section id="screen-home" class="screen active">
+                <div class="hero-content">
+                    <h2>Bridging the Digital Divide via Offline AI</h2>
+                    <p>Instant crop disease diagnosis without internet.</p>
+
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <i class="fa-solid fa-bolt"></i>
+                            <span>Instance Results (< 2s)</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fa-solid fa-mobile-screen"></i>
+                            <span>Offline First</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fa-solid fa-language"></i>
+                            <span>Regional Languages</span>
+                        </div>
+                    </div>
+
+                    <button id="btn-start-scan" class="primary-btn">
+                        <i class="fa-solid fa-camera"></i> Start Scan
+                    </button>
+
+                </div>
+            </section>
+
+            <!-- screen-scan: Camera Interface -->
+            <section id="screen-scan" class="screen">
+                <div class="camera-container">
+                    <video id="camera-feed" autoplay playsinline muted></video>
+                    <div class="overlay-guide">
+                        <div class="scan-frame"></div>
+                        <p class="overlay-text">Align leaf within the frame</p>
+                    </div>
+                </div>
+                <div class="scan-controls">
+                    <button id="btn-capture" class="capture-btn">
+                        <div class="inner-circle"></div>
+                    </button>
+                    <button id="btn-scan-back" class="secondary-btn"><i class="fa-solid fa-arrow-left"></i>
+                        Back</button>
+                </div>
+            </section>
+
+            <!-- screen-analyzing: Loading State -->
+            <section id="screen-analyzing" class="screen">
+                <div class="loading-container">
+                    <div class="spinner"></div>
+                    <h3>Analyzing Leaf...</h3>
+                    <p>Processing with Edge AI (MobileNetV3)</p>
+                </div>
+            </section>
+
+            <!-- screen-result: Diagnosis Result -->
+            <section id="screen-result" class="screen">
+                <div class="result-card">
+                    <div class="image-preview" id="captured-image-container">
+                        <!-- Captured image will be injected here -->
+                    </div>
+                    <div class="diagnosis-info">
+                        <div class="confidence-badge">Confidence Score: <span id="confidence-val">95%</span></div>
+                        <div class="disease-name">
+                            <h2 id="disease-title">Cotton Leaf Spot</h2>
+                            <p id="disease-local">कपास का पत्ती धब्बा रोग</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="solutions-section">
+                    <h3>Comprehensive Solution</h3>
+
+                    <div class="media-actions">
+                        <button class="action-btn audio-btn" onclick="playAudioDiagnosis()">
+                            <i class="fa-solid fa-volume-high"></i> Audio Solution
+                        </button>
+                        <button class="action-btn video-btn" onclick="playVideoDiagnosis()">
+                            <i class="fa-solid fa-play"></i> Expert Video
+                        </button>
+                    </div>
+
+                    <div class="text-solution">
+                        <h4><i class="fa-solid fa-clipboard-list"></i> Text Solution</h4>
+                        <p id="solution-text">Apply proper fungicide immediately. Isolate infected plants to prevent
+                            spread.</p>
+                    </div>
+
+                    <div class="precautions-grid">
+                        <div class="precaution-item">
+                            <div class="icon-circle"><i class="fa-solid fa-head-side-mask"></i></div>
+                            <span>Wear Mask</span>
+                        </div>
+                        <div class="precaution-item">
+                            <div class="icon-circle"><i class="fa-solid fa-hands-bubbles"></i></div>
+                            <span>Wash Hands</span>
+                        </div>
+                        <div class="precaution-item">
+                            <div class="icon-circle"><i class="fa-solid fa-mitten"></i></div> <!-- closest to gloves -->
+                            <span>Wear Gloves</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="btn-home" class="secondary-btn home-btn">
+                    <i class="fa-solid fa-house"></i> Back to Home
+                </button>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -5,11 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>AgroLens - Offline AI Crop Diagnostic</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="agro.css">
     <!-- Using Google Fonts for better typography -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <!-- Using FontAwesome for icons (CDN) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
@@ -21,10 +19,38 @@
         <header>
             <div class="logo-area">
                 <i class="fa-solid fa-leaf logo-icon"></i>
-                <h1>AgroLens</h1>
+                <h1 data-i18n="appTitle">AgroLens</h1>
             </div>
-            <div class="header-status">
-                <span class="offline-badge"><i class="fa-solid fa-wifi-slash"></i> Offline Mode</span>
+            <div class="header-right" style="display: flex; align-items: center; gap: 10px;">
+                <select id="lang-selector" class="lang-selector">
+                    <option value="en">English</option>
+                    <option value="hi">हिन्दी (Hindi)</option>
+                    <option value="bn">বাংলা (Bengali)</option>
+                    <option value="te">తెలుగు (Telugu)</option>
+                    <option value="mr">मराठी (Marathi)</option>
+                    <option value="ta">தமிழ் (Tamil)</option>
+                    <option value="ur">اردو (Urdu)</option>
+                    <option value="gu">ગુજરાતી (Gujarati)</option>
+                    <option value="kn">ಕನ್ನಡ (Kannada)</option>
+                    <option value="ml">മലയാളം (Malayalam)</option>
+                    <option value="or">ଓଡ଼ିଆ (Odia)</option>
+                    <option value="pa">ਪੰਜਾਬੀ (Punjabi)</option>
+                    <option value="as">অসমীয়া (Assamese)</option>
+                    <option value="sa">संस्कृतम् (Sanskrit)</option>
+                    <option value="ne">नेपाली (Nepali)</option>
+                    <option value="sd">सिंधी (Sindhi)</option>
+                    <option value="ks">कश्मीरी (Kashmiri)</option>
+                    <option value="kok">कोंकणी (Konkani)</option>
+                    <option value="doi">डोगरी (Dogri)</option>
+                    <option value="mai">मैथिली (Maithili)</option>
+                    <option value="mni">मणिपुरी (Manipuri)</option>
+                    <option value="brx">बड़ो (Bodo)</option>
+                    <option value="sat">संताली (Santali)</option>
+                </select>
+                <div class="header-status">
+                    <span class="offline-badge" data-i18n="offlineMode"><i class="fa-solid fa-wifi-slash"></i> Offline
+                        Mode</span>
+                </div>
             </div>
         </header>
 
@@ -34,26 +60,26 @@
             <!-- screen-home: Welcome Screen -->
             <section id="screen-home" class="screen active">
                 <div class="hero-content">
-                    <h2>Bridging the Digital Divide via Offline AI</h2>
-                    <p>Instant crop disease diagnosis without internet.</p>
+                    <h2 data-i18n="tagline">Bridging the Digital Divide via Offline AI</h2>
+                    <p data-i18n="subTagline">Instant crop disease diagnosis without internet.</p>
 
                     <div class="features-grid">
                         <div class="feature-item">
                             <i class="fa-solid fa-bolt"></i>
-                            <span>Instance Results (< 2s)</span>
+                            <span data-i18n="featureInstant">Instance Results (< 2s)</span>
                         </div>
                         <div class="feature-item">
                             <i class="fa-solid fa-mobile-screen"></i>
-                            <span>Offline First</span>
+                            <span data-i18n="featureOffline">Offline First</span>
                         </div>
                         <div class="feature-item">
                             <i class="fa-solid fa-language"></i>
-                            <span>Regional Languages</span>
+                            <span data-i18n="featureLang">Regional Languages</span>
                         </div>
                     </div>
 
                     <button id="btn-start-scan" class="primary-btn">
-                        <i class="fa-solid fa-camera"></i> Start Scan
+                        <i class="fa-solid fa-camera"></i> <span data-i18n="btnStart">Start Scan</span>
                     </button>
 
                 </div>
@@ -65,7 +91,7 @@
                     <video id="camera-feed" autoplay playsinline muted></video>
                     <div class="overlay-guide">
                         <div class="scan-frame"></div>
-                        <p class="overlay-text">Align leaf within the frame</p>
+                        <p class="overlay-text" data-i18n="alignLeaf">Align leaf within the frame</p>
                     </div>
                 </div>
                 <div class="scan-controls">
@@ -73,7 +99,7 @@
                         <div class="inner-circle"></div>
                     </button>
                     <button id="btn-scan-back" class="secondary-btn"><i class="fa-solid fa-arrow-left"></i>
-                        Back</button>
+                        <span data-i18n="btnBack">Back</span></button>
                 </div>
             </section>
 
@@ -81,8 +107,8 @@
             <section id="screen-analyzing" class="screen">
                 <div class="loading-container">
                     <div class="spinner"></div>
-                    <h3>Analyzing Leaf...</h3>
-                    <p>Processing with Edge AI (MobileNetV3)</p>
+                    <h3 data-i18n="analyzing">Analyzing Leaf...</h3>
+                    <p data-i18n="processing">Processing with Edge AI (MobileNetV3)</p>
                 </div>
             </section>
 
@@ -93,7 +119,8 @@
                         <!-- Captured image will be injected here -->
                     </div>
                     <div class="diagnosis-info">
-                        <div class="confidence-badge">Confidence Score: <span id="confidence-val">95%</span></div>
+                        <div class="confidence-badge"><span data-i18n="confidence">Confidence Score</span>: <span
+                                id="confidence-val">95%</span></div>
                         <div class="disease-name">
                             <h2 id="disease-title">Cotton Leaf Spot</h2>
                             <p id="disease-local">कपास का पत्ती धब्बा रोग</p>
@@ -106,15 +133,16 @@
 
                     <div class="media-actions">
                         <button class="action-btn audio-btn" onclick="playAudioDiagnosis()">
-                            <i class="fa-solid fa-volume-high"></i> Audio Solution
+                            <i class="fa-solid fa-volume-high"></i> <span data-i18n="audioSol">Audio Solution</span>
                         </button>
                         <button class="action-btn video-btn" onclick="playVideoDiagnosis()">
-                            <i class="fa-solid fa-play"></i> Expert Video
+                            <i class="fa-solid fa-play"></i> <span data-i18n="videoSol">Expert Video</span>
                         </button>
                     </div>
 
                     <div class="text-solution">
-                        <h4><i class="fa-solid fa-clipboard-list"></i> Text Solution</h4>
+                        <h4><i class="fa-solid fa-clipboard-list"></i> <span data-i18n="textSol">Text Solution</span>
+                        </h4>
                         <p id="solution-text">Apply proper fungicide immediately. Isolate infected plants to prevent
                             spread.</p>
                     </div>
@@ -122,28 +150,28 @@
                     <div class="precautions-grid">
                         <div class="precaution-item">
                             <div class="icon-circle"><i class="fa-solid fa-head-side-mask"></i></div>
-                            <span>Wear Mask</span>
+                            <span data-i18n="mask">Wear Mask</span>
                         </div>
                         <div class="precaution-item">
                             <div class="icon-circle"><i class="fa-solid fa-hands-bubbles"></i></div>
-                            <span>Wash Hands</span>
+                            <span data-i18n="hands">Wash Hands</span>
                         </div>
                         <div class="precaution-item">
                             <div class="icon-circle"><i class="fa-solid fa-mitten"></i></div> <!-- closest to gloves -->
-                            <span>Wear Gloves</span>
+                            <span data-i18n="gloves">Wear Gloves</span>
                         </div>
                     </div>
                 </div>
 
                 <button id="btn-home" class="secondary-btn home-btn">
-                    <i class="fa-solid fa-house"></i> Back to Home
+                    <i class="fa-solid fa-house"></i> <span data-i18n="btnHome">Back to Home</span>
                 </button>
             </section>
 
         </main>
     </div>
 
-    <script src="script.js"></script>
+    <script src="agro.js"></script>
 </body>
 
 </html>

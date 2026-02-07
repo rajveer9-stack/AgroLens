@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="agro.css">
     <!-- Using Google Fonts for better typography -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-</head>
+
+
 
 <body>
 
@@ -21,67 +22,78 @@
                 <i class="fa-solid fa-leaf logo-icon"></i>
                 <h1 data-i18n="appTitle">AgroLens</h1>
             </div>
-            <div class="header-right" style="display: flex; align-items: center; gap: 10px;">
-                <select id="lang-selector" class="lang-selector">
-                    <option value="en">English</option>
-                    <option value="hi">हिन्दी (Hindi)</option>
-                    <option value="bn">বাংলা (Bengali)</option>
-                    <option value="te">తెలుగు (Telugu)</option>
-                    <option value="mr">मराठी (Marathi)</option>
-                    <option value="ta">தமிழ் (Tamil)</option>
-                    <option value="ur">اردو (Urdu)</option>
-                    <option value="gu">ગુજરાતી (Gujarati)</option>
-                    <option value="kn">ಕನ್ನಡ (Kannada)</option>
-                    <option value="ml">മലയാളം (Malayalam)</option>
-                    <option value="or">ଓଡ଼ିଆ (Odia)</option>
-                    <option value="pa">ਪੰਜਾਬੀ (Punjabi)</option>
-                    <option value="as">অসমীয়া (Assamese)</option>
-                    <option value="sa">संस्कृतम् (Sanskrit)</option>
-                    <option value="ne">नेपाली (Nepali)</option>
-                    <option value="sd">सिंधी (Sindhi)</option>
-                    <option value="ks">कश्मीरी (Kashmiri)</option>
-                    <option value="kok">कोंकणी (Konkani)</option>
-                    <option value="doi">डोगरी (Dogri)</option>
-                    <option value="mai">मैथिली (Maithili)</option>
-                    <option value="mni">मणिपुरी (Manipuri)</option>
-                    <option value="brx">बड़ो (Bodo)</option>
-                    <option value="sat">संताली (Santali)</option>
-                </select>
-                <div class="header-status">
-                    <span class="offline-badge" data-i18n="offlineMode"><i class="fa-solid fa-wifi-slash"></i> Offline
-                        Mode</span>
-                </div>
-            </div>
+            <!-- Header Right Removed as Lang Selector is now main usage -->
         </header>
 
         <!-- Main Content Area -->
         <main>
 
-            <!-- screen-home: Welcome Screen -->
+            <!-- screen-home: Minimal Home Screen -->
             <section id="screen-home" class="screen active">
-                <div class="hero-content">
-                    <h2 data-i18n="tagline">Bridging the Digital Divide via Offline AI</h2>
-                    <p data-i18n="subTagline">Instant crop disease diagnosis without internet.</p>
-
-                    <div class="features-grid">
-                        <div class="feature-item">
-                            <i class="fa-solid fa-bolt"></i>
-                            <span data-i18n="featureInstant">Instance Results (< 2s)</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fa-solid fa-mobile-screen"></i>
-                            <span data-i18n="featureOffline">Offline First</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fa-solid fa-language"></i>
-                            <span data-i18n="featureLang">Regional Languages</span>
-                        </div>
+                <div class="home-container">
+                    <!-- Language Selector (Prominent) -->
+                    <div class="language-wrapper">
+                        <label for="lang-selector" class="lang-label"><i class="fa-solid fa-language"></i></label>
+                        <select id="lang-selector" class="lang-selector-large">
+                            <option value="en">English</option>
+                            <option value="hi">हिन्दी (Hindi)</option>
+                            <option value="bn">বাংলা (Bengali)</option>
+                            <option value="te">తెలుగు (Telugu)</option>
+                            <option value="mr">मराठी (Marathi)</option>
+                            <option value="ta">தமிழ் (Tamil)</option>
+                            <option value="ur">اردو (Urdu)</option>
+                            <option value="gu">ગુજરાતી (Gujarati)</option>
+                            <option value="kn">ಕನ್ನಡ (Kannada)</option>
+                            <option value="ml">മലയാളം (Malayalam)</option>
+                            <option value="or">ଓଡ଼ିଆ (Odia)</option>
+                            <option value="pa">ਪੰਜਾਬੀ (Punjabi)</option>
+                            <option value="as">অসমীয়া (Assamese)</option>
+                            <option value="sa">संस्कृतम् (Sanskrit)</option>
+                            <option value="ne">नेपाली (Nepali)</option>
+                            <option value="sd">सिंधी (Sindhi)</option>
+                            <option value="ks">कश्मीरी (Kashmiri)</option>
+                            <option value="kok">कोंकणी (Konkani)</option>
+                            <option value="doi">डोगरी (Dogri)</option>
+                            <option value="mai">मैथिली (Maithili)</option>
+                            <option value="mni">मणिपुरी (Manipuri)</option>
+                            <option value="brx">बड़ो (Bodo)</option>
+                            <option value="sat">संताली (Santali)</option>
+                        </select>
                     </div>
 
-                    <button id="btn-start-scan" class="primary-btn">
-                        <i class="fa-solid fa-camera"></i> <span data-i18n="btnStart">Start Scan</span>
+                    <!-- Scan Button -->
+                    <button id="btn-start-scan" class="primary-btn-large">
+                        <i class="fa-solid fa-camera"></i> <span data-i18n="btnStart">Scan Now</span>
                     </button>
 
+                    <!-- Settings Button -->
+                    <button id="btn-settings" class="secondary-btn-large">
+                        <i class="fa-solid fa-gear"></i> <span data-i18n="btnSettings">Settings</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- screen-settings: New Settings Screen -->
+            <section id="screen-settings" class="screen">
+                <div class="settings-header">
+                    <h2 data-i18n="settingsTitle">Settings</h2>
+                    <button id="btn-settings-back" class="icon-btn"><i class="fa-solid fa-times"></i></button>
+                </div>
+                <div class="settings-content">
+                    <div class="setting-item">
+                        <span data-i18n="settingTheme">Dark Mode</span>
+                        <label class="switch">
+                            <input type="checkbox" id="theme-toggle">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div class="setting-item">
+                        <span data-i18n="settingSound">Sound Effects</span>
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
                 </div>
             </section>
 
@@ -107,8 +119,8 @@
             <section id="screen-analyzing" class="screen">
                 <div class="loading-container">
                     <div class="spinner"></div>
-                    <h3 data-i18n="analyzing">Analyzing Leaf...</h3>
-                    <p data-i18n="processing">Processing with Edge AI (MobileNetV3)</p>
+                    <h3 data-i18n="analyzing">Scanning...</h3>
+                    <p data-i18n="processing">Identifying potential issues...</p>
                 </div>
             </section>
 
@@ -129,7 +141,7 @@
                 </div>
 
                 <div class="solutions-section">
-                    <h3>Comprehensive Solution</h3>
+                    <h3 data-i18n="compSol">Comprehensive Solution</h3>
 
                     <div class="media-actions">
                         <button class="action-btn audio-btn" onclick="playAudioDiagnosis()">
